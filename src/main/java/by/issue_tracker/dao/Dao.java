@@ -5,11 +5,11 @@ import by.issue_tracker.db.DbWorker;
 import java.sql.Connection;
 import java.util.List;
 
-public abstract class DAO<E, K> {
+public abstract class Dao<E, K> {
     private DbWorker dbWorker;
-    private Connection connection;
+    protected Connection connection;
 
-    public DAO() {
+    public Dao() {
         dbWorker = new DbWorker();
         connection = dbWorker.getConnection();
     }

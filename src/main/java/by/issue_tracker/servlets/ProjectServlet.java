@@ -19,7 +19,6 @@ public class ProjectServlet extends HttpServlet {
         Connection conn = worker.getConnection();
         worker.closeConnection(conn);
         request.setAttribute("attributeName", "Vlad");
-        RequestDispatcher rd= request.getRequestDispatcher("/projects-list.jsp");
-        rd.forward(request, response);
+        request.getRequestDispatcher("/views/projects-list.jsp").forward(request, response);
     }
 }
