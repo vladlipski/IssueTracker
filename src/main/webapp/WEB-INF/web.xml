@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>ProjectServlet</servlet-name>
-    <servlet-class>by.issue_tracker.ProjectServlet</servlet-class>
+    <servlet-class>by.issue_tracker.servlets.ProjectServlet</servlet-class>
   </servlet>
 
 </web-app>

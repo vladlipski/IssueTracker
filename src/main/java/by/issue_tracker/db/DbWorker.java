@@ -1,38 +1,74 @@
 package by.issue_tracker.db;
 
-import by.issue_tracker.models.User;
 import org.apache.commons.dbutils.DbUtils;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DbWorker {
-    private Connection conn = null;
-    private String url = "jdbc:mysql://localhost:3306/issue_tracker?useUnicode=true&" +
-            "useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private String driver = "com.mysql.jdbc.Driver";
-    private String usr = "root";
-    private String pwd = "root";
-    private User user;
+
+    private Connection connection;
+    private String url;
+    private String driver;
+    private String username;
+    private String password;
+
+    public DbWorker() {
+        InputStream inputStream = null;
+        try {
+            inputStream =  getClass().getClassLoader().getResourceAsStream("dbConnection.properties");
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            url = properties.getProperty("jdbc.url");
+            driver = properties.getProperty("jdbc.driver");
+            username = properties.getProperty("jdbc.username");
+            password = properties.getProperty("jdbc.password");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public Connection getConnection() {
         DbUtils.loadDriver(driver);
         try {
-            conn = DriverManager.getConnection(url, usr, pwd);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (SQLException ex) {
+            System.out.println("Failed to create the database connection.");
         }
-        QueryRunner query = new QueryRunner();
-        try {
-            user = (User) query.query(conn, "select * from user where id=1", new BeanHandler(User.class));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println(user.getName());
-        //DbUtils.closeQuietly(conn);
-        return conn;
+        return connection;
     }
+
+    public void closeConnection(Connection connection) {
+        DbUtils.closeQuietly(connection);
+    }
+
+//    public Connection getConnection() {
+//        DbUtils.loadDriver(driver);
+//        try {
+//            conn = DriverManager.getConnection(url, usr, pwd);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        QueryRunner query = new QueryRunner();
+//        try {
+//            user = (User) query.query(conn, "select * from user where id=1", new BeanHandler(User.class));
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(user.getName());
+//        //DbUtils.closeQuietly(conn);
+//        return conn;
+//    }
 }
