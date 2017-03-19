@@ -1,21 +1,17 @@
 package by.issue_tracker.db;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbutils.DbUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
 public class DbWorker {
 
-    private Connection connection;
-    private String url;
-    private String driver;
-    private String username;
-    private String password;
+    private static final BasicDataSource dataSource = new BasicDataSource();
 
     public DbWorker() {
         InputStream inputStream = null;
@@ -23,10 +19,10 @@ public class DbWorker {
             inputStream =  getClass().getClassLoader().getResourceAsStream("dbConnection.properties");
             Properties properties = new Properties();
             properties.load(inputStream);
-            url = properties.getProperty("jdbc.url");
-            driver = properties.getProperty("jdbc.driver");
-            username = properties.getProperty("jdbc.username");
-            password = properties.getProperty("jdbc.password");
+            dataSource.setUrl(properties.getProperty("jdbc.url"));
+            dataSource.setDriverClassName(properties.getProperty("jdbc.driver"));
+            dataSource.setUsername(properties.getProperty("jdbc.username"));
+            dataSource.setPassword(properties.getProperty("jdbc.password"));
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -41,11 +37,11 @@ public class DbWorker {
     }
 
     public Connection getConnection() {
-        DbUtils.loadDriver(driver);
+        Connection connection = null;
         try {
-            connection = DriverManager.getConnection(url, username, password);
-        } catch (SQLException ex) {
-            System.out.println("Failed to create the database connection.");
+            connection = dataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return connection;
     }
