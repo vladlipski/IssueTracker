@@ -1,6 +1,8 @@
 package by.issue_tracker.models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String id;
     private String name;
     private String lastName;
@@ -48,5 +50,13 @@ public class User {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

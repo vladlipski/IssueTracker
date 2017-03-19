@@ -13,10 +13,10 @@ public class DbWorker {
 
     private static final BasicDataSource dataSource = new BasicDataSource();
 
-    public DbWorker() {
+    static {
         InputStream inputStream = null;
         try {
-            inputStream =  getClass().getClassLoader().getResourceAsStream("dbConnection.properties");
+            inputStream =  DbWorker.class.getClassLoader().getResourceAsStream("dbConnection.properties");
             Properties properties = new Properties();
             properties.load(inputStream);
             dataSource.setUrl(properties.getProperty("jdbc.url"));
@@ -49,22 +49,4 @@ public class DbWorker {
     public void closeConnection(Connection connection) {
         DbUtils.closeQuietly(connection);
     }
-
-//    public Connection getConnection() {
-//        DbUtils.loadDriver(driver);
-//        try {
-//            conn = DriverManager.getConnection(url, usr, pwd);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        QueryRunner query = new QueryRunner();
-//        try {
-//            user = (User) query.query(conn, "select * from user where id=1", new BeanHandler(User.class));
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println(user.getName());
-//        //DbUtils.closeQuietly(conn);
-//        return conn;
-//    }
 }
