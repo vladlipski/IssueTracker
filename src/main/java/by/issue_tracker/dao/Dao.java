@@ -1,5 +1,6 @@
 package by.issue_tracker.dao;
 
+import by.issue_tracker.dao.exception.DaoException;
 import by.issue_tracker.db.DbWorker;
 
 import java.sql.Connection;
@@ -14,11 +15,11 @@ public abstract class Dao<E, K> {
         connection = dbWorker.getConnection();
     }
 
-    public abstract List<E> getAll();
-    public abstract E update(E entity);
-    public abstract E getEntityById(K id);
-    public abstract boolean delete(K id);
-    public abstract boolean create(E entity);
+    public abstract List<E> getAll() throws DaoException;
+    public abstract E update(E entity) throws DaoException;
+    public abstract E getEntityById(K id) throws DaoException;
+    public abstract boolean delete(K id) throws DaoException;
+    public abstract boolean create(E entity) throws DaoException;
 
     public void closeConnection() {
         dbWorker.closeConnection(connection);
