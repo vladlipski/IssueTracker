@@ -1,6 +1,7 @@
 package by.issue_tracker.dao;
 
 import by.issue_tracker.dao.exception.DaoException;
+import by.issue_tracker.dao.interfaces.UserEntity;
 import by.issue_tracker.models.User;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -8,7 +9,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserDao extends Dao<User, Integer> {
+public class UserDao extends Dao implements UserEntity {
     private static final String SELECT_ALL_USERS = "SELECT * FROM USER";
 
     public List<User> getAll() throws DaoException {

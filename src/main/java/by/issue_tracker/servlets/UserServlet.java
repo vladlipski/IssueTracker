@@ -1,7 +1,8 @@
 package by.issue_tracker.servlets;
 
-import by.issue_tracker.dao.DaoFactory;
 import by.issue_tracker.dao.UserDao;
+import by.issue_tracker.dao.exception.DaoException;
+import by.issue_tracker.dao.interfaces.UserEntity;
 import by.issue_tracker.models.User;
 
 import javax.servlet.ServletException;
@@ -17,9 +18,12 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DaoFactory daoFactory = new DaoFactory();
-        UserDao userDao = daoFactory.getUserDao();
-        List<User> users = userDao.getAll();
+        UserEntity userDao = new UserDao();
+        List<User> users = null;
+        try {
+            users = userDao.getAll();
+        } catch (DaoException ignored) {
+        }
         request.setAttribute("users", users);
         request.getRequestDispatcher("/views/users-list.jsp").forward(request, response);
     }
