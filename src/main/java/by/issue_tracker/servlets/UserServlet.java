@@ -1,8 +1,8 @@
 package by.issue_tracker.servlets;
 
-import by.issue_tracker.dao.UserDao;
+import by.issue_tracker.dao.UserMySQLDao;
 import by.issue_tracker.dao.exception.DaoException;
-import by.issue_tracker.dao.interfaces.UserEntity;
+import by.issue_tracker.dao.interfaces.UserDao;
 import by.issue_tracker.models.User;
 
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserEntity userDao = new UserDao();
+        UserDao userDao = new UserMySQLDao();
         List<User> users = null;
         try {
             users = userDao.getAll();

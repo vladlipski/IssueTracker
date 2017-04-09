@@ -6,11 +6,11 @@ import by.issue_tracker.db.DbWorker;
 import java.sql.Connection;
 import java.util.List;
 
-public abstract class Dao {
+public abstract class AbstractMySQLDao {
     private DbWorker dbWorker;
     protected Connection connection;
 
-    public Dao() {
+    public AbstractMySQLDao() {
         dbWorker = new DbWorker();
         connection = dbWorker.getConnection();
     }
