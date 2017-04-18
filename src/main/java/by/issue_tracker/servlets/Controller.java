@@ -7,11 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name="Projects", urlPatterns = "/")
-public class ProjectServlet extends HttpServlet {
+public class Controller extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("attributeName", "IssueTracker");
-        request.getRequestDispatcher("/views/projects-list.jsp").forward(request, response);
+        request.getRequestDispatcher("views/login.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("POST");
     }
 }
