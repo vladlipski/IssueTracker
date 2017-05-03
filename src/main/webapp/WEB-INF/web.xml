@@ -13,6 +13,7 @@
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
     <url-pattern>/signin</url-pattern>
+    <url-pattern>/home</url-pattern>
   </servlet-mapping>
 
 </web-app>
