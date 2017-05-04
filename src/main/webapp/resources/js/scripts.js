@@ -14,8 +14,8 @@ function signIn() {
             success: function(data) {
                 window.location.replace("/home");
             },
-            error: function () {
-
+            error: function (response) {
+                alert(response.status);
             }
         });
     }

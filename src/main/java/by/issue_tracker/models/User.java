@@ -7,7 +7,8 @@ public class User implements Serializable {
     private String name;
     private String lastName;
     private String phoneNO;
-    private String emailId;
+    private String email;
+    private String password;
 
     public User(){
     }
@@ -44,12 +45,20 @@ public class User implements Serializable {
         this.phoneNO = phoneNO;
     }
 
-    public String getEmailId() {
-        return emailId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -59,4 +68,4 @@ public class User implements Serializable {
                 ", name='" + name + '\'' +
                 '}';
     }
-}
+    }

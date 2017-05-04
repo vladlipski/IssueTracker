@@ -1,5 +1,8 @@
 package by.issue_tracker.servlets;
 
+import by.issue_tracker.command.Command;
+import by.issue_tracker.command.factory.CommandRepository;
+import by.issue_tracker.dao.exception.DaoException;
 import by.issue_tracker.models.User;
 
 import javax.servlet.ServletException;
@@ -32,7 +35,17 @@ public class Controller extends HttpServlet {
     private void analyzeRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         User user = (User)session.getAttribute("USER");
-        if (user != null || getCommand(request).equals("SIGN_IN")) {
+        String commandName = getCommand(request);
+        if (user != null || commandName.equals("SIGN_IN")) {
+            CommandRepository factory = CommandRepository.getInstance();
+            Command command = factory.getCommand(commandName);
+
+            try {
+                command.execute(request, response);
+            } catch (DaoException e) {
+                response.sendError(500);
+            }
+
             if (request.getMethod().equals("POST")) {
                 System.out.println("POST");
             } else {
