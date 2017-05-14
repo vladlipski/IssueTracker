@@ -10,4 +10,6 @@ public interface UserService {
     public List<User> getAllUsers() throws ServiceException;
 
     public User updateUser(User user) throws ServiceException;
+
+    public boolean deleteUser(Integer id) throws ServiceException;
 }

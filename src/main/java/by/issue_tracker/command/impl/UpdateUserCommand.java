@@ -20,6 +20,7 @@ public class UpdateUserCommand implements Command{
         user.setEmail(request.getParameter("email"));
         user.setPassword(request.getParameter("password"));
         user.setRole_id(request.getParameter("role_id"));
+
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserService userService = serviceFactory.getUserService();
         userService.updateUser(user);

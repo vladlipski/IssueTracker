@@ -34,5 +34,16 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    public boolean deleteUser(Integer id) throws ServiceException {
+        DaoFactory daoObjectFactory = DaoFactory.getInstance();
+        UserDao userDAO = daoObjectFactory.getUserDao();
+        try {
+            userDAO.delete(id);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+        return true;
+    }
+
 
 }
