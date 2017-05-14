@@ -13,6 +13,7 @@ import java.util.List;
 
 public class UserMySqlDao extends AbstractMySqlDao implements UserDao {
     private static final String SELECT_ALL_USERS = "SELECT * FROM user";
+    private static final String UPDATE_USER = "UPDATE user SET ";
     private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM user WHERE email='";
 
     public List<User> getAll() throws DaoException {
@@ -27,7 +28,17 @@ public class UserMySqlDao extends AbstractMySqlDao implements UserDao {
     }
 
     public User update(User entity) throws DaoException {
-        return null;
+        QueryRunner queryRunner = new QueryRunner();
+        Integer code;
+        try {
+            code = queryRunner.update(connection, UPDATE_USER + "first_name='" + entity.getFirst_name()
+                    + "', last_name='" + entity.getLast_name() + "', email='" + entity.getEmail() +
+                    "', password='" + entity.getPassword() + "', role_id='" + entity.getRole_id() + "' WHERE id='" +
+                    entity.getId() + "'");
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return entity;
     }
 
     public User getEntityById(Integer id) throws DaoException {

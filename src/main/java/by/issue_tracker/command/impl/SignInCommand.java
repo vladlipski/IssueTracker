@@ -4,6 +4,7 @@ import by.issue_tracker.command.Command;
 import by.issue_tracker.dao.exception.DaoException;
 import by.issue_tracker.models.User;
 import by.issue_tracker.service.AccountService;
+import by.issue_tracker.service.exception.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,7 @@ public class SignInCommand implements Command {
     private static final String USER = "USER";
 
 
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws DaoException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, IOException {
         String email = request.getParameter(EMAIL_PARAMETER);
         String password = request.getParameter(PASSWORD_PARAMETER);
         AccountService service = new AccountService();

@@ -12,8 +12,11 @@
 
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
-    <url-pattern>/signin</url-pattern>
-    <url-pattern>/home</url-pattern>
+    <url-pattern>/users</url-pattern>
+    <url-pattern>/projects</url-pattern>
+    <url-pattern>/tasks</url-pattern>
+    <url-pattern>/sprints</url-pattern>
+    <url-pattern>/comments</url-pattern>
   </servlet-mapping>
 
 </web-app>

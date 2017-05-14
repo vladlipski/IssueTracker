@@ -5,7 +5,7 @@
 <body>
     <h2>Hello World!</h2>
     <%
-        response.sendRedirect("/signin");
+        response.sendRedirect("/users?command=GET_USERS");
     %>
 </body>
 </html>

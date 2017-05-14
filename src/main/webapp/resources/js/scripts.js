@@ -20,3 +20,5 @@ function signIn() {
         });
     }
 }
+
+$("[data-toggle=tooltip]").tooltip();
