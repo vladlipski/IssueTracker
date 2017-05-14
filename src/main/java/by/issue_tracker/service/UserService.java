@@ -12,4 +12,6 @@ public interface UserService {
     public User updateUser(User user) throws ServiceException;
 
     public boolean deleteUser(Integer id) throws ServiceException;
+
+    public boolean createUser(User user) throws ServiceException;
 }

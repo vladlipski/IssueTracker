@@ -2,10 +2,7 @@ package by.issue_tracker.command.factory;
 
 import by.issue_tracker.command.Command;
 import by.issue_tracker.command.CommandName;
-import by.issue_tracker.command.impl.DeleteUserCommand;
-import by.issue_tracker.command.impl.GetUsersCommand;
-import by.issue_tracker.command.impl.SignInCommand;
-import by.issue_tracker.command.impl.UpdateUserCommand;
+import by.issue_tracker.command.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +20,7 @@ public class CommandRepository {
         repository.put(CommandName.GET_USERS, new GetUsersCommand());
         repository.put(CommandName.UPDATE_USER, new UpdateUserCommand());
         repository.put(CommandName.DELETE_USER, new DeleteUserCommand());
+        repository.put(CommandName.CREATE_USER, new CreateUserCommand());
     }
 
     public static CommandRepository getInstance() {

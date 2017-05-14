@@ -44,6 +44,23 @@
                                 </tr>
                             </form>
                         </c:forEach>
+                        <form>
+                            <tr>
+                                <td></td>
+                                <td><input name="first_name"></td>
+                                <td><input name="last_name"></td>
+                                <td><input name="email"></td>
+                                <td><input name="role_id"></td>
+                                <td><input name="password"></td>
+                                <td>
+                                    <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                        <button class="btn btn-success btn-xs" name="action" value="CREATE_USER" formmethod="POST">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </p>
+                                </td>
+                            </tr>
+                        </form>
                         </tbody>
                     </table>
                 </div>

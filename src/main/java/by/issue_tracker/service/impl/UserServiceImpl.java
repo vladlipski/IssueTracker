@@ -45,5 +45,16 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    public boolean createUser(User user) throws ServiceException {
+        DaoFactory daoObjectFactory = DaoFactory.getInstance();
+        UserDao userDAO = daoObjectFactory.getUserDao();
+        try {
+            userDAO.create(user);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+        return true;
+    }
+
 
 }

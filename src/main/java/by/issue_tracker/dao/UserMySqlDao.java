@@ -15,6 +15,7 @@ public class UserMySqlDao extends AbstractMySqlDao implements UserDao {
     private static final String SELECT_ALL_USERS = "SELECT * FROM user";
     private static final String UPDATE_USER = "UPDATE user SET";
     private static final String DELETE_USER = "DELETE FROM user WHERE id='";
+    private static final String CREATE_USER = "INSERT INTO user VALUES";
     private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM user WHERE email='";
 
     public List<User> getAll() throws DaoException {
@@ -58,7 +59,16 @@ public class UserMySqlDao extends AbstractMySqlDao implements UserDao {
     }
 
     public boolean create(User entity) throws DaoException {
-        return false;
+        QueryRunner queryRunner = new QueryRunner();
+        Integer code;
+        try {
+            code = queryRunner.update(connection, CREATE_USER + "(" + "null, '" + entity.getFirst_name() +"', '" +
+                    entity.getLast_name() + "', '" + entity.getEmail()+ "', '" + entity.getPassword() + "', '" +
+                    entity.getRole_id() + "');");
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return true;
     }
 
     public User getUser(String email, String password) throws DaoException {
