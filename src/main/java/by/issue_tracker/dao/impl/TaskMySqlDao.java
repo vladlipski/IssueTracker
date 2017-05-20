@@ -32,9 +32,9 @@ public class TaskMySqlDao extends AbstractMySqlDao implements TaskDao {
         Integer code;
         try {
             code = queryRunner.update(connection, UPDATE_TASK + " name='" + entity.getName()
-                    + "', description='" + entity.getDescription() + "', done='" + entity.getDone() +
-                    "', sprint_id='" + entity.getSprint_id() + "', performer_id='" + entity.getPerformer_id()
-                    + "' WHERE id='" +
+                    + "', description='" + entity.getDescription() + "', due_date='" + entity.getDue_date() +
+                    "', done='" + entity.getDone() + "', sprint_id='" + entity.getSprint_id() + "', performer_id='"
+                    + entity.getPerformer_id() + "' WHERE id='" +
                     entity.getId() + "'");
         } catch (SQLException e) {
             throw new DaoException(e);
@@ -62,7 +62,7 @@ public class TaskMySqlDao extends AbstractMySqlDao implements TaskDao {
         Integer code;
         try {
             code = queryRunner.update(connection, CREATE_TASK + "(" + "null, '" + entity.getName() +"', '" +
-                    entity.getDescription() + "', '" + entity.getDone()+ "', '" +
+                    entity.getDescription() + "', '" + entity.getDue_date() + "', '" + entity.getDone()+ "', '" +
                     entity.getSprint_id() + "', '" + entity.getPerformer_id() + "');");
         } catch (SQLException e) {
             throw new DaoException(e);

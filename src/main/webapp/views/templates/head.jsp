@@ -32,8 +32,8 @@
                             <li><a href="/users?command=GET_USERS">Users</a></li>
                             <li><a href="/projects?command=GET_PROJECTS">Projects</a></li>
                             <li><a href="/sprints?command=GET_SPRINTS">Sprints</a></li>
-                            <li><a href="#">Tasks</a></li>
-                            <li><a href="#">Comments</a></li>
+                            <li><a href="/tasks?command=GET_TASKS">Tasks</a></li>
+                            <li><a href="/comments?command=GET_COMMENTS">Comments</a></li>
                         </ul>
                     </div>
                 </div>
