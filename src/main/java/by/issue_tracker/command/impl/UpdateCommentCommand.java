@@ -14,6 +14,7 @@ import java.io.IOException;
 public class UpdateCommentCommand implements Command {
    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServiceException, ServletException {
        Comment comment = new Comment();
+       comment.setId(request.getParameter("comment_id"));
        comment.setContent(request.getParameter("content"));
        comment.setAuthor_id(request.getParameter("author_id"));
        comment.setTask_id(request.getParameter("task_id"));

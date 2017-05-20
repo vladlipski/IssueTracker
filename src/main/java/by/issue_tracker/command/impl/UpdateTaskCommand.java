@@ -14,6 +14,7 @@ import java.io.IOException;
 public class UpdateTaskCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServiceException, ServletException {
         Task task = new Task();
+        task.setId(request.getParameter("task_id"));
         task.setDescription(request.getParameter("description"));
         task.setDue_date(request.getParameter("due_date"));
         task.setName(request.getParameter("name"));

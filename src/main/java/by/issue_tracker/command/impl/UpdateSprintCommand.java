@@ -14,8 +14,9 @@ import java.io.IOException;
 public class UpdateSprintCommand implements Command{
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServiceException, ServletException {
         Sprint sprint = new Sprint();
+        sprint.setId(request.getParameter("sprint_id"));
         sprint.setName(request.getParameter("name"));
-        sprint.setStart_date(request.getParameter("start_date("));
+        sprint.setStart_date(request.getParameter("start_date"));
         sprint.setEnd_date(request.getParameter("end_date"));
         sprint.setProject_id(request.getParameter("project_id"));
 

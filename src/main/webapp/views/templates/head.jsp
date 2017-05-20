@@ -31,7 +31,7 @@
                         <ul class="nav navbar-nav">
                             <li><a href="/users?command=GET_USERS">Users</a></li>
                             <li><a href="/projects?command=GET_PROJECTS">Projects</a></li>
-                            <li><a href="#">Sprints</a></li>
+                            <li><a href="/sprints?command=GET_SPRINTS">Sprints</a></li>
                             <li><a href="#">Tasks</a></li>
                             <li><a href="#">Comments</a></li>
                         </ul>
