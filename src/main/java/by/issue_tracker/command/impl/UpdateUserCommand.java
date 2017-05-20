@@ -23,7 +23,7 @@ public class UpdateUserCommand implements Command{
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserService userService = serviceFactory.getUserService();
-        userService.updateUser(user);
+        userService.update(user);
         response.sendRedirect("/users?command=GET_USERS");
     }
 }

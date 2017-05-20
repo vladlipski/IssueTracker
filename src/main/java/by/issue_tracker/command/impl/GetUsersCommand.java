@@ -15,7 +15,7 @@ public class GetUsersCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServiceException, ServletException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserService userService = serviceFactory.getUserService();
-        Object result = userService.getAllUsers();
+        Object result = userService.getAll();
         request.setAttribute("users", result);
         request.getRequestDispatcher("/views/users.jsp").forward(request,response);
     }

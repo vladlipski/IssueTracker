@@ -21,6 +21,10 @@ public class CommandRepository {
         repository.put(CommandName.UPDATE_USER, new UpdateUserCommand());
         repository.put(CommandName.DELETE_USER, new DeleteUserCommand());
         repository.put(CommandName.CREATE_USER, new CreateUserCommand());
+        repository.put(CommandName.GET_PROJECTS, new GetProjectsCommand());
+        repository.put(CommandName.CREATE_PROJECT, new CreateProjectCommand());
+        repository.put(CommandName.DELETE_PROJECT, new DeleteProjectCommand());
+        repository.put(CommandName.UPDATE_PROJECT, new UpdateProjectCommand());
     }
 
     public static CommandRepository getInstance() {

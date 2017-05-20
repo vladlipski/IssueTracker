@@ -5,5 +5,9 @@ public enum CommandName {
     GET_USERS,
     UPDATE_USER,
     DELETE_USER,
-    CREATE_USER
+    CREATE_USER,
+    GET_PROJECTS,
+    UPDATE_PROJECT,
+    DELETE_PROJECT,
+    CREATE_PROJECT
 }

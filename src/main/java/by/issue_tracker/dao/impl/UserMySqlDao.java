@@ -1,5 +1,6 @@
-package by.issue_tracker.dao;
+package by.issue_tracker.dao.impl;
 
+import by.issue_tracker.dao.AbstractMySqlDao;
 import by.issue_tracker.dao.exception.DaoException;
 import by.issue_tracker.dao.interfaces.UserDao;
 import by.issue_tracker.models.User;

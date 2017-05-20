@@ -22,7 +22,7 @@ public class CreateUserCommand implements Command{
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         UserService userService = serviceFactory.getUserService();
-        userService.createUser(user);
+        userService.create(user);
         response.sendRedirect("/users?command=GET_USERS");
     }
 }
