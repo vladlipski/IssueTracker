@@ -20,11 +20,11 @@
                     <c:forEach var="project" items="${projects}">
                         <form>
                             <tr>
-                                <td><input name="project_id" value=${project.id} hidden>${project.id}</td>
-                                <td><input name="name" value=${project.name} ></td>
-                                <td><textarea name="description" value=${project.description} >${project.description}</textarea></td>
-                                <td><input name="creation_date" value=${project.creation_date} ></td>
-                                <td><input name="manager_id" value=${project.manager_id} ></td>
+                                <td><input name="project_id" value=${project.id} hidden required>${project.id}</td>
+                                <td><input name="name" value=${project.name} required></td>
+                                <td><textarea name="description" value=${project.description} required>${project.description}</textarea></td>
+                                <td><input name="creation_date" value=${project.creation_date} required></td>
+                                <td><input name="manager_id" value=${project.manager_id} required></td>
                                 <td>
                                     <p data-placement="top" data-toggle="tooltip" title="Edit">
                                         <button class="btn btn-primary btn-xs" name="action" value="UPDATE_PROJECT" formmethod="POST">
@@ -45,13 +45,13 @@
                     <form>
                         <tr>
                             <td></td>
-                            <td><input name="name"></td>
-                            <td><textarea name="description"></textarea></td>
-                            <td><input name="creation_date"></td>
-                            <td><input name="manager_id"></td>
+                            <td><input name="name" required></td>
+                            <td><textarea name="description" required></textarea></td>
+                            <td><input name="creation_date" required></td>
+                            <td><input name="manager_id" required></td>
                             <td>
                                 <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                    <button class="btn btn-success btn-xs" name="action" value="CREATE_PROJECT" formmethod="POST">
+                                    <button class="btn btn-success btn-xs" type="submit" name="action" value="CREATE_PROJECT" formmethod="POST">
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </button>
                                 </p>

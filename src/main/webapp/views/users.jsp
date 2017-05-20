@@ -21,15 +21,15 @@
                         <c:forEach var="user" items="${users}">
                             <form>
                                 <tr>
-                                    <td><input name="user_id" value=${user.id} hidden>${user.id}</td>
-                                    <td><input name="first_name" value=${user.first_name} ></td>
-                                    <td><input name="last_name" value=${user.last_name} ></td>
-                                    <td><input name="email" value=${user.email} ></td>
-                                    <td><input name="role_id" value=${user.role_id} ></td>
-                                    <td><input name="password" value=${user.password} ></td>
+                                    <td><input name="user_id" value=${user.id} hidden required>${user.id}</td>
+                                    <td><input name="first_name" value=${user.first_name} required></td>
+                                    <td><input name="last_name" value=${user.last_name} required></td>
+                                    <td><input name="email" value=${user.email} required></td>
+                                    <td><input name="role_id" value=${user.role_id} required></td>
+                                    <td><input name="password" value=${user.password} required></td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <button class="btn btn-primary btn-xs" name="action" value="UPDATE_USER" formmethod="POST">
+                                            <button class="btn btn-primary btn-xs" type="submit" name="action" value="UPDATE_USER" formmethod="POST">
                                                 <span class="glyphicon glyphicon-pencil"></span>
                                             </button>
                                         </p>
@@ -47,14 +47,14 @@
                         <form>
                             <tr>
                                 <td></td>
-                                <td><input name="first_name"></td>
-                                <td><input name="last_name"></td>
-                                <td><input name="email"></td>
-                                <td><input name="role_id"></td>
-                                <td><input name="password"></td>
+                                <td><input name="first_name" required></td>
+                                <td><input name="last_name" required></td>
+                                <td><input name="email" required></td>
+                                <td><input name="role_id" required></td>
+                                <td><input name="password" required></td>
                                 <td>
                                     <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                        <button class="btn btn-success btn-xs" name="action" value="CREATE_USER" formmethod="POST">
+                                        <button class="btn btn-success btn-xs" type="submit" name="action" value="CREATE_USER" formmethod="POST">
                                             <span class="glyphicon glyphicon-plus"></span>
                                         </button>
                                     </p>
