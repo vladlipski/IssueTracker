@@ -2,10 +2,8 @@ package by.issue_tracker.command.impl;
 
 import by.issue_tracker.command.Command;
 import by.issue_tracker.models.Project;
-import by.issue_tracker.models.User;
-import by.issue_tracker.service.ProjectService;
+import by.issue_tracker.service.interfaces.ProjectService;
 import by.issue_tracker.service.ServiceFactory;
-import by.issue_tracker.service.UserService;
 import by.issue_tracker.service.exception.ServiceException;
 
 import javax.servlet.ServletException;

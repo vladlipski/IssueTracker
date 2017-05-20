@@ -1,9 +1,8 @@
 package by.issue_tracker.command.impl;
 
 import by.issue_tracker.command.Command;
-import by.issue_tracker.dao.exception.DaoException;
 import by.issue_tracker.models.User;
-import by.issue_tracker.service.AccountService;
+import by.issue_tracker.service.impl.AccountService;
 import by.issue_tracker.service.exception.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;

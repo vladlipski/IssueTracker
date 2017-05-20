@@ -2,7 +2,7 @@ package by.issue_tracker.command.impl;
 
 import by.issue_tracker.command.Command;
 import by.issue_tracker.models.Project;
-import by.issue_tracker.service.ProjectService;
+import by.issue_tracker.service.interfaces.ProjectService;
 import by.issue_tracker.service.ServiceFactory;
 import by.issue_tracker.service.exception.ServiceException;
 
@@ -19,6 +19,7 @@ public class CreateProjectCommand implements Command{
         project.setCreation_date(request.getParameter("creation_date"));
         project.setDescription(request.getParameter("description"));
         project.setManager_id(request.getParameter("manager_id"));
+
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         ProjectService projectService = serviceFactory.getProjectService();
         projectService.create(project);

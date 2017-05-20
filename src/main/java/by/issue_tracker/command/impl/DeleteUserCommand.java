@@ -3,7 +3,7 @@ package by.issue_tracker.command.impl;
 
 import by.issue_tracker.command.Command;
 import by.issue_tracker.service.ServiceFactory;
-import by.issue_tracker.service.UserService;
+import by.issue_tracker.service.interfaces.UserService;
 import by.issue_tracker.service.exception.ServiceException;
 
 import javax.servlet.ServletException;

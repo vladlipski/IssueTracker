@@ -25,6 +25,18 @@ public class CommandRepository {
         repository.put(CommandName.CREATE_PROJECT, new CreateProjectCommand());
         repository.put(CommandName.DELETE_PROJECT, new DeleteProjectCommand());
         repository.put(CommandName.UPDATE_PROJECT, new UpdateProjectCommand());
+        repository.put(CommandName.GET_SPRINTS, new GetSprintsCommand());
+        repository.put(CommandName.CREATE_SPRINT, new CreateSprintCommand());
+        repository.put(CommandName.DELETE_SPRINT, new DeleteSprintCommand());
+        repository.put(CommandName.UPDATE_SPRINT, new UpdateSprintCommand());
+        repository.put(CommandName.GET_TASKS, new GetTasksCommand());
+        repository.put(CommandName.CREATE_TASK, new CreateTaskCommand());
+        repository.put(CommandName.DELETE_TASK, new DeleteTaskCommand());
+        repository.put(CommandName.UPDATE_TASK, new UpdateTaskCommand());
+        repository.put(CommandName.GET_COMMENTS, new GetCommentsCommand());
+        repository.put(CommandName.CREATE_COMMENT, new CreateCommentCommand());
+        repository.put(CommandName.DELETE_COMMENT, new DeleteCommentCommand());
+        repository.put(CommandName.UPDATE_COMMENT, new UpdateCommentCommand());
     }
 
     public static CommandRepository getInstance() {

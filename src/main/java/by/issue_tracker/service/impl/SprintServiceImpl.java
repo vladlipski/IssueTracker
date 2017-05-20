@@ -2,32 +2,32 @@ package by.issue_tracker.service.impl;
 
 import by.issue_tracker.dao.DaoFactory;
 import by.issue_tracker.dao.exception.DaoException;
-import by.issue_tracker.dao.interfaces.UserDao;
-import by.issue_tracker.models.User;
-import by.issue_tracker.service.interfaces.UserService;
+import by.issue_tracker.dao.interfaces.SprintDao;
+import by.issue_tracker.models.Sprint;
 import by.issue_tracker.service.exception.ServiceException;
+import by.issue_tracker.service.interfaces.SprintService;
 
 import java.util.List;
 
-public class UserServiceImpl implements UserService {
+public class SprintServiceImpl implements SprintService{
 
-    public List<User> getAll() throws ServiceException {
+    public List<Sprint> getAll() throws ServiceException {
         DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        UserDao userDAO = daoObjectFactory.getUserDao();
-        List<User> users;
+        SprintDao sprintDAO = daoObjectFactory.getSprintDao();
+        List<Sprint> sprints;
         try {
-            users = userDAO.getAll();
+            sprints = sprintDAO.getAll();
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
-        return users;
+        return sprints;
     }
 
-    public User update(User entity) throws ServiceException {
+    public Sprint update(Sprint entity) throws ServiceException {
         DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        UserDao userDAO = daoObjectFactory.getUserDao();
+        SprintDao sprintDAO = daoObjectFactory.getSprintDao();
         try {
-            userDAO.update(entity);
+            sprintDAO.update(entity);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -36,20 +36,20 @@ public class UserServiceImpl implements UserService {
 
     public boolean delete(Integer id) throws ServiceException {
         DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        UserDao userDAO = daoObjectFactory.getUserDao();
+        SprintDao sprintDAO = daoObjectFactory.getSprintDao();
         try {
-            userDAO.delete(id);
+            sprintDAO.delete(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
         return true;
     }
 
-    public boolean create(User entity) throws ServiceException {
+    public boolean create(Sprint entity) throws ServiceException {
         DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        UserDao userDAO = daoObjectFactory.getUserDao();
+        SprintDao sprintDAO = daoObjectFactory.getSprintDao();
         try {
-            userDAO.create(entity);
+            sprintDAO.create(entity);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

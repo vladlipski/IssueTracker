@@ -4,7 +4,7 @@ import by.issue_tracker.dao.DaoFactory;
 import by.issue_tracker.dao.exception.DaoException;
 import by.issue_tracker.dao.interfaces.ProjectDao;
 import by.issue_tracker.models.Project;
-import by.issue_tracker.service.ProjectService;
+import by.issue_tracker.service.interfaces.ProjectService;
 import by.issue_tracker.service.exception.ServiceException;
 
 import java.util.List;

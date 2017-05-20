@@ -1,4 +1,4 @@
-package by.issue_tracker.service;
+package by.issue_tracker.service.impl;
 
 import by.issue_tracker.dao.AbstractMySqlDao;
 import by.issue_tracker.dao.DaoFactory;
