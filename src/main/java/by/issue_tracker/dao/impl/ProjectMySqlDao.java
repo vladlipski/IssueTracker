@@ -15,7 +15,6 @@ public class ProjectMySqlDao extends AbstractMySqlDao implements ProjectDao {
     private static final String UPDATE_PROJECT = "UPDATE project SET";
     private static final String DELETE_PROJECT = "DELETE FROM project WHERE id='";
     private static final String CREATE_PROJECT = "INSERT INTO project VALUES";
-    private static final String SELECT_PROJECT_BY_EMAIL = "SELECT * FROM project WHERE email='";
     
     public List<Project> getAll() throws DaoException {
         QueryRunner queryRunner = new QueryRunner();
