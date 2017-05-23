@@ -52,7 +52,6 @@ public class TaskServiceImpl implements ITaskService {
 
     @Override
     public boolean create(Task task) throws ServiceException {
-
         try {
             return taskDAO.create(task);
         } catch (DAOException e) {
