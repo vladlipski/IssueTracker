@@ -14,7 +14,6 @@
           crossorigin="anonymous">
 </head>
 <body>
-<div class="container content">
     <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -49,3 +48,5 @@
             </div>
         </nav>
     </header>
+    <main>
+        <div class="container content">

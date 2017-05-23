@@ -10,9 +10,9 @@
                autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <a href="signup">Sign Up</a>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
     </form>
-    <a href="signup">Sign Up</a>
 
 </div>
 
