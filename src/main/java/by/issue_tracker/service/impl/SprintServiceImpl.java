@@ -1,58 +1,64 @@
 package by.issue_tracker.service.impl;
 
-import by.issue_tracker.dao.DaoFactory;
-import by.issue_tracker.dao.exception.DaoException;
-import by.issue_tracker.dao.interfaces.SprintDao;
-import by.issue_tracker.models.Sprint;
+import by.issue_tracker.dao.ISprintDAO;
+import by.issue_tracker.dao.exception.DAOException;
+import by.issue_tracker.model.Sprint;
+import by.issue_tracker.service.ISprintService;
 import by.issue_tracker.service.exception.ServiceException;
-import by.issue_tracker.service.interfaces.SprintService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class SprintServiceImpl implements SprintService{
+@Service
+public class SprintServiceImpl implements ISprintService {
 
+    private final ISprintDAO sprintDAO;
+
+    @Autowired
+    public SprintServiceImpl(ISprintDAO sprintDAO) {
+        this.sprintDAO = sprintDAO;
+    }
+
+    @Override
     public List<Sprint> getAll() throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        SprintDao sprintDAO = daoObjectFactory.getSprintDao();
+
         List<Sprint> sprints;
         try {
             sprints = sprintDAO.getAll();
-        } catch (DaoException e) {
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
         return sprints;
     }
 
-    public Sprint update(Sprint entity) throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        SprintDao sprintDAO = daoObjectFactory.getSprintDao();
+    @Override
+    public boolean update(Sprint sprint) throws ServiceException {
+
         try {
-            sprintDAO.update(entity);
-        } catch (DaoException e) {
+            return sprintDAO.update(sprint);
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return entity;
     }
 
+    @Override
     public boolean delete(Integer id) throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        SprintDao sprintDAO = daoObjectFactory.getSprintDao();
+
         try {
-            sprintDAO.delete(id);
-        } catch (DaoException e) {
+            return sprintDAO.delete(id);
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return true;
     }
 
-    public boolean create(Sprint entity) throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        SprintDao sprintDAO = daoObjectFactory.getSprintDao();
+    @Override
+    public boolean create(Sprint sprint) throws ServiceException {
+
         try {
-            sprintDAO.create(entity);
-        } catch (DaoException e) {
+            return sprintDAO.create(sprint);
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return true;
     }
 }

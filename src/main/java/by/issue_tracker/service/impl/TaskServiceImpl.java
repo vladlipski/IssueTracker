@@ -1,57 +1,62 @@
 package by.issue_tracker.service.impl;
 
-import by.issue_tracker.dao.DaoFactory;
-import by.issue_tracker.dao.exception.DaoException;
-import by.issue_tracker.dao.interfaces.TaskDao;
-import by.issue_tracker.models.Task;
+
+import by.issue_tracker.dao.ITaskDAO;
+import by.issue_tracker.dao.exception.DAOException;
+import by.issue_tracker.model.Task;
+import by.issue_tracker.service.ITaskService;
 import by.issue_tracker.service.exception.ServiceException;
-import by.issue_tracker.service.interfaces.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class TaskServiceImpl implements TaskService{
+@Service
+public class TaskServiceImpl implements ITaskService {
+
+    private final ITaskDAO taskDAO;
+
+    @Autowired
+    public TaskServiceImpl(ITaskDAO taskDAO) {
+        this.taskDAO = taskDAO;
+    }
+
+    @Override
     public List<Task> getAll() throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        TaskDao taskDAO = daoObjectFactory.getTaskDao();
         List<Task> tasks;
         try {
             tasks = taskDAO.getAll();
-        } catch (DaoException e) {
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
         return tasks;
     }
 
-    public Task update(Task entity) throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        TaskDao taskDAO = daoObjectFactory.getTaskDao();
+    @Override
+    public boolean update(Task task) throws ServiceException {
         try {
-            taskDAO.update(entity);
-        } catch (DaoException e) {
+            return taskDAO.update(task);
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return entity;
     }
 
+    @Override
     public boolean delete(Integer id) throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        TaskDao taskDAO = daoObjectFactory.getTaskDao();
         try {
-            taskDAO.delete(id);
-        } catch (DaoException e) {
+            return taskDAO.delete(id);
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return true;
     }
 
-    public boolean create(Task entity) throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        TaskDao taskDAO = daoObjectFactory.getTaskDao();
+    @Override
+    public boolean create(Task task) throws ServiceException {
+
         try {
-            taskDAO.create(entity);
-        } catch (DaoException e) {
+            return taskDAO.create(task);
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return true;
     }
 }
