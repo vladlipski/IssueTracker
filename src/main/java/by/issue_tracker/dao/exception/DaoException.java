@@ -1,19 +1,19 @@
 package by.issue_tracker.dao.exception;
 
-public class DaoException extends Exception {
-    public DaoException () {
+public class DAOException extends Exception {
+    public DAOException() {
 
     }
 
-    public DaoException (String message) {
-        super (message);
+    public DAOException(String message) {
+        super(message);
     }
 
-    public DaoException (Throwable cause) {
-        super (cause);
+    public DAOException(Throwable cause) {
+        super(cause);
     }
 
-    public DaoException (String message, Throwable cause) {
-        super (message, cause);
+    public DAOException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

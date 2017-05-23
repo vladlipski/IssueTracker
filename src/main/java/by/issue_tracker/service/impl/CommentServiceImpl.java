@@ -1,58 +1,60 @@
 package by.issue_tracker.service.impl;
 
-import by.issue_tracker.dao.DaoFactory;
-import by.issue_tracker.dao.exception.DaoException;
-import by.issue_tracker.dao.interfaces.CommentDao;
-import by.issue_tracker.models.Comment;
+import by.issue_tracker.dao.ICommentDAO;
+import by.issue_tracker.dao.exception.DAOException;
+import by.issue_tracker.model.Comment;
+import by.issue_tracker.service.ICommentService;
 import by.issue_tracker.service.exception.ServiceException;
-import by.issue_tracker.service.interfaces.CommentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class CommentServiceImpl implements CommentService{
+@Service
+public class CommentServiceImpl implements ICommentService {
 
+    private final ICommentDAO commentDAO;
+
+    @Autowired
+    public CommentServiceImpl(ICommentDAO commentDAO) {
+        this.commentDAO = commentDAO;
+    }
+
+    @Override
     public List<Comment> getAll() throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        CommentDao commentDAO = daoObjectFactory.getCommentDao();
         List<Comment> comments;
         try {
             comments = commentDAO.getAll();
-        } catch (DaoException e) {
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
         return comments;
     }
 
-    public Comment update(Comment entity) throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        CommentDao commentDAO = daoObjectFactory.getCommentDao();
+    @Override
+    public boolean update(Comment comment) throws ServiceException {
         try {
-            commentDAO.update(entity);
-        } catch (DaoException e) {
+            return commentDAO.update(comment);
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return entity;
     }
 
+    @Override
     public boolean delete(Integer id) throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        CommentDao commentDAO = daoObjectFactory.getCommentDao();
         try {
-            commentDAO.delete(id);
-        } catch (DaoException e) {
+            return commentDAO.delete(id);
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return true;
     }
 
-    public boolean create(Comment entity) throws ServiceException {
-        DaoFactory daoObjectFactory = DaoFactory.getInstance();
-        CommentDao commentDAO = daoObjectFactory.getCommentDao();
+    @Override
+    public boolean create(Comment comment) throws ServiceException {
         try {
-            commentDAO.create(entity);
-        } catch (DaoException e) {
+            return commentDAO.create(comment);
+        } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return true;
     }
 }
