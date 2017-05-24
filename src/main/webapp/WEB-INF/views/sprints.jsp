@@ -47,6 +47,30 @@
                                 </td>
                             </form>
 
+                            <form method="post" action="generate-sprint-tasks-report-pdf">
+                                <input type="hidden" name="id" value=${sprint.id}>
+                                <td>
+                                    <p data-placement="top" data-toggle="tooltip" title="Download sprint tasks report PDF">
+                                        <button class="btn btn-warning btn-xs" type="submit">PDF</button>
+                                    </p>
+                                </td>
+                            </form>
+                            <form method="post" action="generate-sprint-tasks-report-csv">
+                                <input type="hidden" name="id" value=${sprint.id}>
+                                <td>
+                                    <p data-placement="top" data-toggle="tooltip" title="Download sprint tasks report CSV">
+                                        <button class="btn btn-warning btn-xs" type="submit">CSV</button>
+                                    </p>
+                                </td>
+                            </form>
+                            <form method="post" action="generate-sprint-tasks-report-xls">
+                                <input type="hidden" name="id" value=${sprint.id}>
+                                <td>
+                                    <p data-placement="top" data-toggle="tooltip" title="Download sprint tasks report XLS">
+                                        <button class="btn btn-warning btn-xs" type="submit">XLS</button>
+                                    </p>
+                                </td>
+                            </form>
                         </tr>
 
                     </c:forEach>
