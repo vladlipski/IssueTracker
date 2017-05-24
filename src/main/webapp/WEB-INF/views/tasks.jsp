@@ -41,8 +41,6 @@
                             </form>
                             <form method="post" action="del-task">
                                 <input type="hidden" name="id" value=${task.id}>
-
-
                                 <td>
                                     <p data-placement="top" data-toggle="tooltip" title="Delete">
                                         <button class="btn btn-danger btn-xs" type="submit">
@@ -52,6 +50,30 @@
                                 </td>
                             </form>
 
+                            <form method="post" action="generate-task-report-pdf">
+                                <input type="hidden" name="id" value=${task.id}>
+                                <td>
+                                    <p data-placement="top" data-toggle="tooltip" title="Download task report PDF">
+                                        <button class="btn btn-warning btn-xs" type="submit">PDF</button>
+                                    </p>
+                                </td>
+                            </form>
+                            <form method="post" action="generate-task-report-csv">
+                                <input type="hidden" name="id" value=${task.id}>
+                                <td>
+                                    <p data-placement="top" data-toggle="tooltip" title="Download task report CSV">
+                                        <button class="btn btn-warning btn-xs" type="submit">CSV</button>
+                                    </p>
+                                </td>
+                            </form>
+                            <form method="post" action="generate-task-report-xls">
+                                <input type="hidden" name="id" value=${task.id}>
+                                <td>
+                                    <p data-placement="top" data-toggle="tooltip" title="Download task report XLS">
+                                        <button class="btn btn-warning btn-xs" type="submit">XLS</button>
+                                    </p>
+                                </td>
+                            </form>
                         </tr>
 
                     </c:forEach>
